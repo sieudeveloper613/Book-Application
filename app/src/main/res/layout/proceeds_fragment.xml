@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:background="#DFD3D3"
+    tools:context=".LIBFragment.ProceedsFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_day_from"
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Day From"/>
+
+        <EditText
+            android:id="@+id/ed_day_from"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:textSize="20dp"
+            android:textColorHint="@color/black"
+            android:hint="From..."/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_day_to"
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Day To"/>
+
+        <EditText
+            android:id="@+id/ed_day_to"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:textSize="20dp"
+            android:textColorHint="@color/black"
+            android:hint="To..."/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_get_proceeds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="get Proceeds"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"/>
+
+
+    <TextView
+        android:id="@+id/tv_result_proceeds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Result of Proceeds"
+        android:textSize="22dp"
+        android:textColor="#FF0000"
+        android:gravity="center"
+        android:layout_marginTop="50dp"/>
+
+</LinearLayout>
