@@ -17,6 +17,7 @@ import com.example.mob2041_pnlib_libmana_project.Model.LoaiSach;
 import com.example.mob2041_pnlib_libmana_project.Model.Sach;
 import com.example.mob2041_pnlib_libmana_project.R;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class BookManagerAdapter extends ArrayAdapter<Sach> {
@@ -24,7 +25,7 @@ public class BookManagerAdapter extends ArrayAdapter<Sach> {
     BookManagerFragment fragment;
     private ArrayList<Sach> lists;
     ImageView imgDel;
-    TextView tvBookType, tvBookName, tvHirePrice, tvType;
+    TextView tvBookId, tvBookName, tvRentalHire, tvCategory;
 
     public BookManagerAdapter(Context context, BookManagerFragment fragment, ArrayList<Sach> lists){
         super(context, 0, lists);
@@ -39,22 +40,27 @@ public class BookManagerAdapter extends ArrayAdapter<Sach> {
        View view = convertView;
        if(view == null){
            LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-           view = inflater.inflate(R.layout.book_item_listview, null );
+           view = inflater.inflate(R.layout.item_book, null );
        }
 
        final Sach item = lists.get(position);
        if(item != null){
            LoaiSachDAO loaiSachDAO = new LoaiSachDAO(context);
            LoaiSach loaiSach = LoaiSachDAO.getID(String.valueOf(item.maLoai));
-           tvBookType = view.findViewById(R.id.tv_maSach);
-           tvBookType.setText("BookType ID : " + item.maSach);
-           tvBookName = view.findViewById(R.id.tv_tenSach);
-           tvBookName.setText("Book Name : " + item.tenSach);
-           tvHirePrice = view.findViewById(R.id.tv_giaThue);
-           tvHirePrice.setText("Price : " + item.giaThue);
-           tvType = view.findViewById(R.id.tv_loaiSach);
-           tvType.setText("Type : " + loaiSach.tenLoai);
-           imgDel = view.findViewById(R.id.img_del);
+           tvBookId = view.findViewById(R.id.tv_book_id);
+           tvBookId.setText(String.valueOf(item.maSach));
+
+           tvBookName = view.findViewById(R.id.tv_name_of_book);
+           tvBookName.setText(item.tenSach);
+
+           tvRentalHire = view.findViewById(R.id.tv_giaThue);
+           DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+           tvRentalHire.setText("Rental: " + decimalFormat.format(item.giaThue) + "đ");
+
+           tvCategory = view.findViewById(R.id.tv_category_of_book);
+           tvCategory.setText(loaiSach.tenLoai);
+
+           imgDel = view.findViewById(R.id.img_delete_book);
        }
        imgDel.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -63,7 +69,7 @@ public class BookManagerAdapter extends ArrayAdapter<Sach> {
            }
        });
        return view;
-       // checked course 6 - video 6.1.1
+
     }
 
 

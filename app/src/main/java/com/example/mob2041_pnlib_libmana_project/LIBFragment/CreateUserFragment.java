@@ -1,13 +1,12 @@
 package com.example.mob2041_pnlib_libmana_project.LIBFragment;
 
-import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,81 +16,101 @@ import androidx.fragment.app.Fragment;
 import com.example.mob2041_pnlib_libmana_project.LIBDAO.ThuThuDAO;
 import com.example.mob2041_pnlib_libmana_project.Model.ThuThu;
 import com.example.mob2041_pnlib_libmana_project.R;
-import com.google.android.material.textfield.TextInputEditText;
 
-import static android.content.Context.MODE_PRIVATE;
+public class CreateUserFragment extends Fragment implements View.OnClickListener{
+    // View and ViewGroup
+    EditText edNewAccount, edNewName, edNewPassword, edEnterNewPassword;
+    Button btnCreate, btnDelete;
+    LinearLayout layout;
 
-public class CreateUserFragment extends Fragment {
-    EditText edUserName, edPassWord, edReType, edFullName;
-    Button btnChange, btnCancel;
+    // Object and References
     ThuThuDAO dao;
 
-    @Nullable
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.create_user_fragment, container, false);
-        edUserName = view.findViewById(R.id.ed_create_user_name);
-        edFullName = view.findViewById(R.id.ed_create_full_name);
-        edPassWord = view.findViewById(R.id.ed_create_password);
-        edReType = view.findViewById(R.id.ed_retype_password);
-        btnChange = view.findViewById(R.id.btn_change);
-        btnChange.setBackgroundColor(Color.RED);
-        btnCancel = view.findViewById(R.id.btn_cancel);
-        btnCancel.setBackgroundColor(Color.RED);
 
+        // Define id for view
+        initView(view);
+
+        // Define method
         dao = new ThuThuDAO(getActivity());
-
-        btnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                edUserName.setText("");
-                edFullName.setText("");
-                edPassWord.setText("");
-                edReType.setText("");
-            }
-        });
-
-        btnChange.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ThuThu thuThu = new ThuThu();
-                thuThu.maTT = edUserName.getText().toString();
-                thuThu.hoTen = edFullName.getText().toString();
-                thuThu.matKhau = edPassWord.getText().toString();
-
-                if (validate() > 0){
-                    if (dao.insert(thuThu) > 0){
-                        Toast.makeText(getActivity(), "Create User Success", Toast.LENGTH_SHORT).show();
-                        edUserName.setText("");
-                        edFullName.setText("");
-                        edPassWord.setText("");
-                        edReType.setText("");
-                    } else {
-                        Toast.makeText(getActivity(), "Create User Failed", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-        });
-
+        btnDelete.setOnClickListener(this::onClick);
+        btnCreate.setOnClickListener(this::onClick);
 
         return view;
     }
 
+
+
+
+    private void initView(View view) {
+        edNewAccount = view.findViewById(R.id.ed_new_user);
+        edNewName = view.findViewById(R.id.ed_new_name);
+        edNewPassword = view.findViewById(R.id.ed_new_password);
+        edEnterNewPassword = view.findViewById(R.id.ed_enter_new_password);
+        btnCreate = view.findViewById(R.id.btn_create_new_user);
+        btnDelete = view.findViewById(R.id.btn_delete_all_information);
+        layout = view.findViewById(R.id.linear_container);
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btn_delete_all_information:
+                deleteAll();
+                break;
+
+            case R.id.btn_create_new_user:
+                createNewUser();
+                break;
+        }
+    }
+
+
+    private void deleteAll(){
+        edNewAccount.setText("");
+        edNewName.setText("");
+        edNewPassword.setText("");
+        edEnterNewPassword.setText("");
+    }
+
+
+    private void createNewUser(){
+        ThuThu thuThu = new ThuThu();
+        thuThu.maTT = edNewAccount.getText().toString();
+        thuThu.hoTen = edNewName.getText().toString();
+        thuThu.matKhau = edNewPassword.getText().toString();
+
+        if (validate() > 0){
+            if (dao.insert(thuThu) > 0){
+                Toast.makeText(getActivity(), "Create new user successful", Toast.LENGTH_SHORT).show();
+                edNewAccount.setText("");
+                edNewName.setText("");
+                edNewPassword.setText("");
+                edEnterNewPassword.setText("");
+            } else {
+                Toast.makeText(getActivity(), "Create new user Failed!", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+
     public int validate(){
         int check = 1;
-        if (edUserName.getText().length() == 0 || edPassWord.getText().length() == 0 || edFullName.getText().length() == 0 || edReType.getText().length() == 0){
-            Toast.makeText(getContext(), "You have to type all INFORMATION", Toast.LENGTH_SHORT).show();
+        if (edNewAccount.getText().length() == 0 || edNewName.getText().length() == 0 || edNewPassword.getText().length() == 0 || edEnterNewPassword.getText().length() == 0){
+            Toast.makeText(getActivity(), "Information must not empty", Toast.LENGTH_SHORT).show();
             check = -1;
         } else{
-            String pass = edPassWord.getText().toString();
-            String repass = edReType.getText().toString();
-                if (!pass.equals(repass)){
-                    Toast.makeText(getContext(), "The PassWord is not Same One", Toast.LENGTH_SHORT).show();
-                }
+            String password = edNewPassword.getText().toString();
+            String rePassword = edEnterNewPassword.getText().toString();
+            if (!password.equals(rePassword)){
+                Toast.makeText(getActivity(), "Password are not same!", Toast.LENGTH_SHORT).show();
+            }
         }
         return check;
     }
-
 
 }

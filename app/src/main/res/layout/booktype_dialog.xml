@@ -1,58 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/background_custom_dialog"
     android:orientation="vertical"
-    android:padding="15dp"
+    android:padding="@dimen/padding_size_small"
     android:layout_width="match_parent"
-    android:background="#EEF12424"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
 
     <TextView
-        android:id="@+id/ed_maLoai"
+        android:background="@drawable/back_ground_input"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Category"
+        android:textSize="@dimen/font_size_content"
+        android:textColor="@color/black"
+        android:elevation="@dimen/elevation_normal"
+        android:layout_marginBottom="@dimen/margin_size_small"
+        android:padding="@dimen/padding_size_small"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="ID of BookType"
-        android:textColorHint="@color/white"
-        android:textSize="25dp"
-        android:textColor="@color/white"
-        android:padding="5dp"
-        android:layout_marginBottom="25dp"/>
+        android:layout_height="wrap_content"/>
 
     <EditText
-        android:id="@+id/ed_tenLoaiSach"
+        android:id="@+id/ed_category_name"
+        android:background="@drawable/back_ground_input"
+        android:fontFamily="@font/roboto_regular"
+        android:hint="name of category"
+        android:textColorHint="@color/grey"
+        android:textSize="@dimen/font_size_content"
+        android:textColor="@color/black"
+        android:elevation="@dimen/elevation_normal"
+        android:layout_marginBottom="@dimen/margin_size_small"
+        android:padding="@dimen/padding_size_small"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Name of BookType"
-        android:textColorHint="@color/white"
-        android:textSize="25dp"
-        android:textColor="@color/white"
-        android:padding="5dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_height="wrap_content"/>
 
 
     <LinearLayout
+        android:weightSum="2"
         android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margin_size_large"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp">
+        android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/btn_save_book_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Save"
-            android:textSize="20dp"
-            android:layout_marginLeft="30dp"
-            />
+            android:id="@+id/btn_create_category"
+            android:backgroundTint="@color/golden_yellow"
+            android:text="Create"
+            android:textSize="@dimen/font_size_title"
+            android:textColor="@color/white"
+            android:textAllCaps="true"
+            android:padding="@dimen/padding_size_tiny"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
 
         <Button
-            android:id="@+id/btn_cancel_book_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/btn_cancel_category"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:text="Cancel"
-            android:textSize="20dp"
-            android:layout_marginLeft="40dp"
-            />
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_size_title"
+            android:textAllCaps="false"
+            android:layout_gravity="center"
+            android:padding="@dimen/padding_size_tiny"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </LinearLayout>

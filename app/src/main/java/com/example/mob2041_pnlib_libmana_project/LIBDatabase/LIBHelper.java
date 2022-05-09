@@ -24,40 +24,40 @@ public class LIBHelper extends SQLiteOpenHelper {
             // tạo bản thành viên
             String createTableThanhVien =
                     "create table ThanhVien (" + "maTV INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                            "hoTen TEXT NOT NULL," +
-                                "namSinh TEXT NOT NULL)";
+                                                 "hoTen TEXT NOT NULL," +
+                                                 "namSinh TEXT NOT NULL)";
             db.execSQL(createTableThanhVien);
 
             // tạo bản Thủ Thư
             String createTableThuThu =
                     "create table ThuThu (" + "maTT TEXT PRIMARY KEY ," +
-                            "hoTen TEXT NOT NULL," +
-                                "matKhau TEXT NOT NULL)";
+                                              "hoTen TEXT NOT NULL," +
+                                              "matKhau TEXT NOT NULL)";
             db.execSQL(createTableThuThu);
 
             // tạo bản Loại Sách
             String createTableLoaiSach =
                     "create table LoaiSach (" + "maLoai INTEGER PRIMARY KEY AUTOINCREMENT," +
-                            "tenLoai TEXT NOT NULL)";
+                                                "tenLoai TEXT NOT NULL)";
             db.execSQL(createTableLoaiSach);
 
             // tạo bản Sách
             String createTableSach =
                     "create table Sach (" + "maSach INTEGER PRIMARY KEY AUTOINCREMENT," +
-                            "tenSach TEXT NOT NULL," +
-                                "giaThue INTEGER NOT NULL," +
-                                    "maLoai INTEGER REFERENCES LoaiSach(maLoai))";
+                                            "tenSach TEXT NOT NULL," +
+                                            "giaThue INTEGER NOT NULL," +
+                                            "maLoai INTEGER REFERENCES LoaiSach(maLoai))";
             db.execSQL(createTableSach);
 
             //tạo bản Phiếu Mượn
             String createTablePhieuMuon =
                     "create table PhieuMuon (" + "maPM INTEGER PRIMARY KEY AUTOINCREMENT," +
-                            "maTT TEXT REFERENCES ThuThu(maTT)," +
-                                "maTV INTEGER REFERENCES ThanhVien(maTV)," +
-                                    "maSach INTEGER REFERENCES Sach(loaiSach)," +
-                                        "Ngay DATE NOT NULL," +
-                                            "traSach INTEGER NOT NULL," +
-                                                "tienThue INTEGER NOT NULL)";
+                                                 "maTT TEXT REFERENCES ThuThu(maTT)," +
+                                                 "maTV INTEGER REFERENCES ThanhVien(maTV)," +
+                                                 "maSach INTEGER REFERENCES Sach(loaiSach)," +
+                                                 "Ngay DATE NOT NULL," +
+                                                 "traSach INTEGER NOT NULL," +
+                                                 "tienThue INTEGER NOT NULL)";
             db.execSQL(createTablePhieuMuon);
         }
 
@@ -85,5 +85,3 @@ public class LIBHelper extends SQLiteOpenHelper {
             onCreate(db);
         }
     }
-
-    // checked

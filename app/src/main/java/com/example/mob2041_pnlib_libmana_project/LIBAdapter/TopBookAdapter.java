@@ -38,7 +38,7 @@ public class TopBookAdapter extends ArrayAdapter<TopBook> {
 
         if(view == null){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.top_book_item, null);
+            view = inflater.inflate(R.layout.item_top_book, null);
         }
         final TopBook item =  lists.get(position);
         if (item != null){

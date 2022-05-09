@@ -17,8 +17,11 @@
     <style name="Theme.AppCompat.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
 
-
+    <style name="MyAlertDialogTheme" parent="Base.Theme.AppCompat.Light.Dialog.Alert">
+        <item name="windowFixedWidthMajor">90%</item>
+        <item name="windowFixedWidthMinor">90%</item>
     </style>
 
     <style name="Theme.Android_MOB204_ASM_PS14258.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

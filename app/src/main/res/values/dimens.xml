@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- Images components -->
+    <!-- Large -->
+    <dimen name="empty_icon_width_large">128dp</dimen>
+    <dimen name="empty_icon_height_large">128dp</dimen>
+    <!-- Medium -->
+    <dimen name="empty_icon_width_medium">64dp</dimen>
+    <dimen name="empty_icon_height_medium">64dp</dimen>
+    <!-- Small -->
+    <dimen name="empty_icon_width_small">36dp</dimen>
+    <dimen name="empty_icon_height_small">36dp</dimen>
+    <!-- Tiny -->
+    <dimen name="empty_icon_width_tiny">24dp</dimen>
+    <dimen name="empty_icon_height_tiny">24dp</dimen>
+
+    <!-- Font size components -->
+    <dimen name="font_size_panel">32dp</dimen>
+    <dimen name="font_size_title">20dp</dimen>
+    <dimen name="font_size_content">16dp</dimen>
+    <dimen name="font_size_note">14dp</dimen>
+
+    <!-- Margin size components -->
+    <dimen name="margin_size_large">32dp</dimen>
+    <dimen name="margin_size_medium">24dp</dimen>
+    <dimen name="margin_size_small">16dp</dimen>
+    <dimen name="margin_size_tiny">8dp</dimen>
+
+    <!-- Padding size components -->
+    <dimen name="padding_size_large">48dp</dimen>
+    <dimen name="padding_size_medium">32dp</dimen>
+    <dimen name="padding_size_small">16dp</dimen>
+    <dimen name="padding_size_tiny">8dp</dimen>
+
+    <!-- corner size components -->
+    <dimen name="corner_large">30dp</dimen>
+    <dimen name="corner_medium">18dp</dimen>
+    <dimen name="corner_small">12dp</dimen>
+    <dimen name="corner_tiny">6dp</dimen>
+
+    <!-- elevation size component -->
+    <dimen name="elevation_normal">4dp</dimen>
+    <dimen name="elevation_large">10dp</dimen>
+
+
+</resources>

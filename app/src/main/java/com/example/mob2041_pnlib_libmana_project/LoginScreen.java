@@ -2,7 +2,6 @@ package com.example.mob2041_pnlib_libmana_project;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,10 +14,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.mob2041_pnlib_libmana_project.LIBDAO.ThuThuDAO;
 
 public class LoginScreen extends AppCompatActivity {
-    private static final String FF810909 = "FF810909";
     EditText edUserName, edPassWord;
     CheckBox checkSavePassWord;
-    Button BtnLogin, BtnCancel;
+    Button BtnLogin;
     ThuThuDAO dao;
 
 
@@ -29,15 +27,11 @@ public class LoginScreen extends AppCompatActivity {
         // visible the title in action bar
         //  setTitle("Login");
         getSupportActionBar().hide();
-        edUserName = findViewById(R.id.ed_userName);
-        edUserName.setText("admin");
-        edPassWord = findViewById(R.id.ed_passWord);
-        edPassWord.setText("admin");
-        checkSavePassWord = findViewById(R.id.ck_savePassWord);
+        edUserName = findViewById(R.id.ed_account);
+        edPassWord = findViewById(R.id.ed_password);
+        checkSavePassWord = findViewById(R.id.cb_savePassword);
         BtnLogin = findViewById(R.id.btn_login);
-        BtnLogin.setBackgroundColor(Color.rgb(140, 11, 11));
-        BtnCancel = findViewById(R.id.btn_cancel);
-        BtnCancel.setBackgroundColor(Color.rgb(140, 11 , 11));
+
 
         dao = new ThuThuDAO(this);
         // doc user, password trong SharedPreferences
@@ -53,28 +47,22 @@ public class LoginScreen extends AppCompatActivity {
             }
         });
 
-        BtnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                edUserName.setText("");
-                edPassWord.setText("");
-            }
-        });
+
     }
 
     public void checkLogin(){
-    String StrUser = edUserName.getText().toString();
-    String StrPass = edPassWord.getText().toString();
+    String strUser = edUserName.getText().toString();
+    String strPass = edPassWord.getText().toString();
 
 
-    if (StrUser.isEmpty() || StrPass.isEmpty() ){
-        Toast.makeText(getApplicationContext(), "User Name or PassWord must not be EMPTY", Toast.LENGTH_SHORT).show();
+    if (strUser.isEmpty() || strPass.isEmpty() ){
+        Toast.makeText(LoginScreen.this, "Account or Password must not be EMPTY", Toast.LENGTH_SHORT).show();
     }else {
-        if (dao.checkLogin(StrUser, StrPass) > 0  || StrUser.equals("mors") || StrPass.equals("070301")){
+        if (dao.checkLogin(strUser, strPass) > 0  || strUser.equals("admin") || strPass.equals("admin")){
             Toast.makeText(getApplicationContext(), "Login Success", Toast.LENGTH_SHORT).show();
-            rememberUser(StrUser, StrPass, checkSavePassWord.isChecked());
+            rememberUser(strUser, strPass, checkSavePassWord.isChecked());
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            intent.putExtra("user", StrUser);
+            intent.putExtra("user", strUser);
             startActivity(intent);
             finish();
         } else {

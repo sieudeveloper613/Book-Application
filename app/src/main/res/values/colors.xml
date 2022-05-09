@@ -5,9 +5,19 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
+
+
+    <!-- Color Main Components -->
+    <color name="back_ground">#FEF0D6</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
     <color name="red">#E61212</color>
+    <color name="grey">#BDC7D8</color>
+    <color name="green">#0099A0</color>
+    <color name="golden_yellow">#FCC200</color>
+    <color name="light_yellow">#E4D96F</color>
+    <color name="transparent">#00000000</color>
 
     <item name="red_statusBar" type="color">#ED1818</item>
+
 </resources>

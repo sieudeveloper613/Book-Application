@@ -1,9 +1,12 @@
 package com.example.mob2041_pnlib_libmana_project.LIBFragment;
 
+import static java.time.LocalDate.now;
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,12 +33,9 @@ import com.example.mob2041_pnlib_libmana_project.Model.ThanhVien;
 import com.example.mob2041_pnlib_libmana_project.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.sql.Date;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-
-import static java.time.LocalDate.now;
-import static java.time.LocalDate.of;
 
 
 public class TicketBookManagerFragMent extends Fragment {
@@ -43,7 +43,6 @@ public class TicketBookManagerFragMent extends Fragment {
     ArrayList<PhieuMuon> list;
     FloatingActionButton fab;
     Dialog dialog;
-    TextView edBookTicketId;
     Spinner spinnerMember, spinnerBook;
     TextView tvDay, tvPrice;
     CheckBox checkboxBookReturn;
@@ -90,16 +89,15 @@ public class TicketBookManagerFragMent extends Fragment {
     }
 
     protected void openDialog(final Context context, final int type) {
-        dialog = new Dialog(context);
+        dialog = new Dialog(context, R.style.MyAlertDialogTheme);
         dialog.setContentView(R.layout.book_ticket_dialog);
-        edBookTicketId = dialog.findViewById(R.id.ed_book_ticket_id);
         spinnerBook = dialog.findViewById(R.id.spinner_book_id);
         spinnerMember = dialog.findViewById(R.id.spinner_member_id);
         tvDay = dialog.findViewById(R.id.tv_day);
         tvPrice = dialog.findViewById(R.id.tv_price);
         checkboxBookReturn = dialog.findViewById(R.id.chk_book_return);
         btnCancel = dialog.findViewById(R.id.btn_cancel_ticket);
-        btnSave = dialog.findViewById(R.id.btn_save_ticket);
+        btnSave = dialog.findViewById(R.id.btn_create_new_ticket);
         thanhVienDAO = new ThanhVienDAO(context);
         listThanhVien = new ArrayList<ThanhVien>();
         listThanhVien = (ArrayList<ThanhVien>) thanhVienDAO.getAll();
@@ -187,7 +185,9 @@ public class TicketBookManagerFragMent extends Fragment {
                         item.maSach = BookId;
                         item.maTV = memberId;
                         //item.ngay = java.util.Date.valueOf(String.valueOf(NewDate));
-                        item.ngay = java.sql.Date.valueOf(String.valueOf(now()));
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                            item.ngay = Date.valueOf(String.valueOf(now()));
+                        }
                         item.tienThue = Price;
                         if (checkboxBookReturn.isChecked()) {
                             item.traSach = 1;

@@ -11,10 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.mob2041_pnlib_libmana_project.LIBFragment.BookManagerFragment;
 import com.example.mob2041_pnlib_libmana_project.LIBFragment.BookTypeManagerFragment;
 import com.example.mob2041_pnlib_libmana_project.Model.LoaiSach;
-import com.example.mob2041_pnlib_libmana_project.Model.ThanhVien;
 import com.example.mob2041_pnlib_libmana_project.R;
 
 import java.util.ArrayList;
@@ -23,7 +21,7 @@ public class BookTypeManagerAdapter extends ArrayAdapter<LoaiSach> {
     private Context context;
     BookTypeManagerFragment fragment;
     private ArrayList<LoaiSach> lists;
-    TextView tvMaLoai, tvTenLoai;
+    TextView tvCategoryId, tvCategoryName;
     ImageView imgDelete;
 
     public BookTypeManagerAdapter(Context context, BookTypeManagerFragment fragment, ArrayList<LoaiSach> lists){
@@ -39,17 +37,17 @@ public class BookTypeManagerAdapter extends ArrayAdapter<LoaiSach> {
         View view = convertView;
         if(view == null){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.booktype_item_listview, null);
+            view = inflater.inflate(R.layout.item_category, null);
         }
         final LoaiSach item = lists.get(position);
         if(item != null){
-            tvMaLoai = view.findViewById(R.id.tv_maLoai);
-            tvMaLoai.setText("ID : " + item.maLoai);
+            tvCategoryId = view.findViewById(R.id.tv_item_category_id);
+            tvCategoryId.setText(String.valueOf(item.maLoai));
 
-            tvTenLoai = view.findViewById(R.id.tv_tenLoai);
-            tvTenLoai.setText("Name : " + item.tenLoai);
+            tvCategoryName = view.findViewById(R.id.tv_item_category_name);
+            tvCategoryName.setText(item.tenLoai);
 
-            imgDelete = view.findViewById(R.id.img_del);
+            imgDelete = view.findViewById(R.id.img_item_delete_category);
         }
         imgDelete.setOnClickListener(new View.OnClickListener() {
             @Override

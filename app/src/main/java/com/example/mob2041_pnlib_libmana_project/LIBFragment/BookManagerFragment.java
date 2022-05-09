@@ -4,13 +4,11 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.mob2041_pnlib_libmana_project.FormatPrice;
 import com.example.mob2041_pnlib_libmana_project.LIBAdapter.BookManagerAdapter;
 import com.example.mob2041_pnlib_libmana_project.LIBAdapter.BookTypeSpinnerAdapter;
 import com.example.mob2041_pnlib_libmana_project.LIBDAO.LoaiSachDAO;
@@ -33,15 +32,19 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 
 
-public class BookManagerFragment extends Fragment {
+public class BookManagerFragment extends Fragment implements View.OnClickListener{
+    // View and ViewGroup
     ListView listView;
-    ArrayList<Sach> list;
-    FloatingActionButton fab;
-    Dialog dialog;
-    EditText edBookName, edPrice; // có thể có edBookID nếu sai;
+    EditText edBookName, edRentalPrice; // có thể có edBookID nếu sai;
     TextView edBookID;
     Spinner spinner;
-    Button btnSave, btnCancel;
+    Button btnCreate, btnCancel;
+    Dialog dialog;
+    FloatingActionButton fabCreateBook;
+
+
+    // Object and References
+    ArrayList<Sach> list;
     static SachDAO dao;
     Sach item;
     BookManagerAdapter adapter;
@@ -55,19 +58,18 @@ public class BookManagerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.book_manager_fragment, container, false);
-        listView = view.findViewById(R.id.lv_bookManager);
-        fab = view.findViewById(R.id.fab_button_book);
+
+        // Define id for view
+        initView(view);
+
+        // Define event for view
+        initControl();
+
+        // Define method
         dao = new SachDAO(getActivity());
+        updateListView();
 
-        UpdateLv();
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openDialog(getActivity(), 0);
-                //Toast.makeText(getContext(), "clicked", Toast.LENGTH_SHORT).show();
-            }
-        });
 
         listView.setOnItemLongClickListener((parent, view1, position1, id) -> {
             item = list.get(position);
@@ -77,19 +79,38 @@ public class BookManagerFragment extends Fragment {
         return view;
     }
 
+
+
+    private void initView(View view){
+        listView = view.findViewById(R.id.lv_bookManager);
+        fabCreateBook = view.findViewById(R.id.fab_create_new_book);
+    }
+
+    private void initControl() {
+        fabCreateBook.setOnClickListener(this::onClick);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.fab_create_new_book:
+                openDialog(getActivity(), 0);
+                break;
+        }
+    }
+
     protected void openDialog(final Context context, final int type) {
         // custom dialog
-        dialog = new Dialog(context);
+        dialog = new Dialog(context, R.style.MyAlertDialogTheme);
         dialog.setContentView(R.layout.book_dialog);
-        edBookID = dialog.findViewById(R.id.tv_maSach);
-        edBookName = dialog.findViewById(R.id.ed_tenSach);
-        edPrice = dialog.findViewById(R.id.ed_giaThue);
-        spinner = dialog.findViewById(R.id.spinner_loaiSach);
-        btnSave = dialog.findViewById(R.id.btn_save_book);
-        //btnSave.setBackgroundColor(Color.RED);
+        View v = dialog.getWindow().getDecorView();
+        v.setBackgroundResource(android.R.color.transparent);
+        edBookName = dialog.findViewById(R.id.ed_name_of_book);
+        edRentalPrice = dialog.findViewById(R.id.ed_rental_price);
+        spinner = dialog.findViewById(R.id.spinner_type_of_book);
+        btnCreate = dialog.findViewById(R.id.btn_create_new_book);
         btnCancel = dialog.findViewById(R.id.btn_cancel_book);
-        //btnCancel.setBackgroundColor(Color.RED);
-        listLoaiSach = new ArrayList<LoaiSach>();
+        listLoaiSach = new ArrayList<>();
         loaiSachDAO = new LoaiSachDAO(context);
         listLoaiSach = (ArrayList<LoaiSach>) loaiSachDAO.getAll();
         spinnerAdapter = new BookTypeSpinnerAdapter(context, listLoaiSach);
@@ -105,16 +126,15 @@ public class BookManagerFragment extends Fragment {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
 
         // check type insert 0 or 1
         //edBookID.setEnabled(false);
         if (type != 0) {
-            //edBookID.setText(String.valueOf(item.maSach));
+            edBookID.setText(String.valueOf(item.maSach));
             edBookName.setText(item.tenSach);
-            edPrice.setText(String.valueOf(item.giaThue));
+            edRentalPrice.setText(new FormatPrice().formatNumber(item.giaThue));
             for (int i = 0; i < listLoaiSach.size(); i++) {
                 if (item.maLoai == (listLoaiSach.get(i).maLoai)) {
                     position = i;
@@ -132,21 +152,21 @@ public class BookManagerFragment extends Fragment {
             }
         });
 
-        btnSave.setOnClickListener(new View.OnClickListener() {
+        btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
                 item = new Sach();
                 item.tenSach = edBookName.getText().toString();
-                item.giaThue = Integer.parseInt(edPrice.getText().toString());
+                item.giaThue = Integer.parseInt(edRentalPrice.getText().toString());
                 item.maLoai = maLoaiSach;
                 if (validate() > 0) {
                     if (type == 0) {
                         // type == 0 (insert)
                         if (dao.insert(item) > 0) {
-                            Toast.makeText(context, "Success Added", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Create new book successful", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(context, "Fail Added", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Create new book failed!", Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         // type == 1
@@ -157,7 +177,7 @@ public class BookManagerFragment extends Fragment {
                             Toast.makeText(context, "Fail Fixed", Toast.LENGTH_SHORT).show();
                         }
                     }
-                    UpdateLv();
+                    updateListView();
                     dialog.dismiss();
                 }
             }
@@ -167,40 +187,43 @@ public class BookManagerFragment extends Fragment {
 
     public void Delete(final String Id){
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("Delete");
-        builder.setMessage("Do you want to delete it ?");
+        builder.setTitle("Delete book");
+        builder.setMessage("Do you want to delete this book ?");
         builder.setCancelable(true);
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dao.delete(Id);
-                UpdateLv();
+                updateListView();
                 dialog.cancel();
             }
         });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
             }
         });
-        AlertDialog alert  = builder.create();
+        builder.create();
         builder.show();
     }
 
-    void UpdateLv(){
+    // reset listview if it is updated
+    void updateListView(){
     list = (ArrayList<Sach>) dao.getAll();
     adapter = new BookManagerAdapter(getActivity(), this, list);
     listView.setAdapter(adapter);
     }
 
+    // validate input form
     public int validate(){
         int check = 1;
-        if (edBookName.getText().length() == 0 ||  edPrice.getText().length() == 0){
-            Toast.makeText(getContext(), "You must type all of Information", Toast.LENGTH_SHORT).show();
+        if (edBookName.getText().length() == 0 ||  edRentalPrice.getText().length() == 0){
+            Toast.makeText(getContext(), "Information of Book must not empty", Toast.LENGTH_SHORT).show();
             check = -1;
         }
         return check;
-        //checked course 6 - video 6.1.2
     }
+
+
 }

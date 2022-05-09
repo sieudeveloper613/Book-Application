@@ -4,23 +4,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="15dp"
-    android:background="#DFD3D3"
+    android:padding="@dimen/padding_size_small"
+    android:background="@color/back_ground"
     tools:context=".LIBFragment.TopBookFragment">
 
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Top Book"
-        android:textSize="30dp"
+        android:background="@drawable/background_top_book"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Top of Books"
+        android:textSize="@dimen/font_size_panel"
         android:textColor="@color/black"
         android:gravity="center"
-        android:layout_marginBottom="15dp"/>
+        android:layout_marginBottom="@dimen/margin_size_small"
+        android:padding="@dimen/padding_size_tiny"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <ListView
         android:id="@+id/lv_top_book"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

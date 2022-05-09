@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/background_custom_dialog"
     android:orientation="vertical"
-    android:padding="15dp"
+    android:padding="@dimen/padding_size_small"
     android:layout_width="match_parent"
-    android:background="#EEF12424"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
 
     <TextView
-        android:id="@+id/ed_book_ticket_id"
+        android:background="@drawable/back_ground_input"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Create new ticket"
+        android:textSize="@dimen/font_size_title"
+        android:textColor="@color/black"
+        android:padding="@dimen/padding_size_small"
+        android:elevation="@dimen/elevation_normal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Book Ticket ID"
-        android:textColorHint="@color/white"
-        android:textSize="20dp"
-        android:textColor="@color/white"
-        android:padding="5dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_height="wrap_content"/>
 
     <Spinner
         android:id="@+id/spinner_member_id"
@@ -35,11 +35,11 @@
 
     <TextView
         android:id="@+id/tv_day"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:textSize="20dp"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <TextView
         android:id="@+id/tv_price"
@@ -52,39 +52,48 @@
 
     <CheckBox
         android:id="@+id/chk_book_return"
+        android:buttonTint="@color/green"
+        android:fontFamily="@font/roboto_regular"
+        android:text="Return book?"
+        android:textColor="@color/green"
+        android:textSize="@dimen/font_size_content"
+        android:visibility="invisible"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Book's Return"
-        android:textColor="@color/white"
-        android:textColorLink="@color/white"
-        android:textSize="20dp"
-        android:visibility="invisible"/>
+        android:layout_height="wrap_content"/>
 
 
 
     <LinearLayout
+        android:weightSum="2"
         android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_size_large"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp">
+        android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/btn_save_ticket"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Save"
-            android:textSize="20dp"
-            android:layout_marginLeft="10dp"
-            />
+            android:id="@+id/btn_create_new_ticket"
+            android:backgroundTint="@color/golden_yellow"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Create"
+            android:textSize="@dimen/font_size_content"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:layout_weight="1.2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
 
         <Button
             android:id="@+id/btn_cancel_ticket"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:fontFamily="@font/roboto_medium"
             android:text="Cancel"
-            android:textSize="20dp"
-            android:layout_marginLeft="50dp"
-            />
+            android:textSize="@dimen/font_size_content"
+            android:textColor="@color/black"
+            android:textAllCaps="false"
+            android:layout_weight="0.8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 </LinearLayout>

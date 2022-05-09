@@ -1,6 +1,5 @@
 package com.example.mob2041_pnlib_libmana_project.LIBAdapter;
 
-import android.content.ContentResolver;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,18 +37,18 @@ public class MemberManagerAdapter extends ArrayAdapter<ThanhVien> {
         View view = convertView;
         if(view == null){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.member_item_listview, null);
+            view = inflater.inflate(R.layout.item_member, null);
         }
         final ThanhVien item = lists.get(position);
         if(item != null){
             maTV = view.findViewById(R.id.tv_maTV);
-            maTV.setText("ID of Member : " + item.maTV);
+            maTV.setText("ID: PNL-MEM00000" + item.maTV);
 
             tenTV = view.findViewById(R.id.tv_tenTV);
-            tenTV.setText("Name of Member : " + item.hoTen);
+            tenTV.setText(item.hoTen);
 
             namSinh = view.findViewById(R.id.tv_namSinh);
-            namSinh.setText("Year of Birth : " + item.namSinh);
+            namSinh.setText(item.namSinh);
 
             imgDelete = view.findViewById(R.id.img_del);
         }
@@ -60,7 +59,6 @@ public class MemberManagerAdapter extends ArrayAdapter<ThanhVien> {
             }
         });
         return view;
-         // checked course 5 - video 5.2.1
     }
 
 

@@ -3,7 +3,49 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/layout/activity_login_screen.xml" value="0.10916919959473151" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/drawable/back_ground_input.xml" value="0.134" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/drawable/background_custom_dialog.xml" value="0.1435" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/drawable/background_spinner.xml" value="0.1435" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/drawable/background_textview.xml" value="0.1435" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/drawable/background_top_book.xml" value="0.1435" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/drawable/corner_button.xml" value="0.1435" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/drawable/ic_baseline_book.xml" value="0.1435" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/drawable/ic_baseline_cloud_upload.xml" value="0.1435" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/drawable/ic_baseline_create.xml" value="0.1435" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/drawable/ic_baseline_password_red.xml" value="0.1435" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/drawable/ic_baseline_person_add.xml" value="0.1435" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/drawable/ic_baseline_person_add_24.xml" value="0.1435" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/drawable/ic_baseline_person_pin.xml" value="0.1435" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/drawable/ic_ticket_book_manager.xml" value="0.1435" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/layout/activity_change_pass_word_fragment.xml" value="0.33" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/layout/activity_login_screen.xml" value="0.25" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/layout/activity_main.xml" value="0.10916919959473151" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/layout/activity_welcome_screen.xml" value="0.18704710144927536" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/layout/book_dialog.xml" value="0.25" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/layout/book_item_listview.xml" value="0.25" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/layout/book_item_spinner.xml" value="0.18704710144927536" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/layout/book_manager_fragment.xml" value="0.18704710144927536" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/layout/book_ticket_dialog.xml" value="0.3230563002680965" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/layout/bookticket_item.xml" value="0.25" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/layout/bookticket_manager_fragment.xml" value="0.18704710144927536" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/layout/booktype_dialog.xml" value="0.18704710144927536" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/layout/booktype_manager_fragment.xml" value="0.18704710144927536" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/layout/booktype_spinner_dialog.xml" value="0.18704710144927536" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/layout/change_password_fragment.xml" value="0.22" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/layout/create_new_client_dialog.xml" value="0.18704710144927536" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/layout/create_user_fragment.xml" value="0.18704710144927536" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/layout/item_book.xml" value="0.18704710144927536" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/layout/item_category.xml" value="0.25" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/layout/item_member.xml" value="0.25" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/layout/item_ticket.xml" value="0.18704710144927536" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/layout/member_dialog.xml" value="0.25" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/layout/member_item_spinner.xml" value="0.18704710144927536" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/layout/member_manager_fragment.xml" value="0.18704710144927536" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/layout/nav_header_main.xml" value="0.18704710144927536" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/layout/proceeds_fragment.xml" value="0.33" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/layout/top_book_fragment.xml" value="0.18704710144927536" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/layout/top_book_item.xml" value="0.18704710144927536" />
+        <entry key="..\:/Android Studio/Android Project/Example of Android Project/PNLIB_LIBMANA_Project/app/src/main/res/menu/drawer.xml" value="0.33" />
       </map>
     </option>
   </component>

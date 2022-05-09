@@ -7,22 +7,22 @@
         <item
             android:id="@+id/TBManager"
             android:icon="@drawable/ic_ticket_book_manager"
-            android:title="Ticket Book Manager" />
+            android:title="Ticket Book Management" />
 
         <item
             android:id="@+id/BTManager"
             android:icon="@drawable/ic_booktype_manager"
-            android:title="BookType Manager" />
+            android:title="Category Management" />
 
         <item
             android:id="@+id/BManager"
-            android:icon="@drawable/ic_ticket_book_manager"
-            android:title="Book Manager" />
+            android:icon="@drawable/ic_baseline_book"
+            android:title="Book Management" />
 
         <item
             android:id="@+id/MManager"
             android:icon="@drawable/ic_member_manager"
-            android:title="Members Manager" />
+            android:title="Client Management" />
     </group>
 
     <item android:title="Statistics">
@@ -30,7 +30,7 @@
             <item
                 android:id="@+id/TBook"
                 android:icon="@drawable/ic_top_book"
-                android:title="Top 10 Most borrowed books" />
+                android:title="Top 10 rental book" />
 
             <item
                 android:id="@+id/proceeds"
@@ -44,7 +44,7 @@
             <item
                 android:id="@+id/create_account"
                 android:icon="@drawable/ic_add_user"
-                android:title="Add User Account"
+                android:title="Add new client"
                 android:visible="false"/>
 
             <item

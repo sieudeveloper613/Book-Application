@@ -17,69 +17,87 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.example.mob2041_pnlib_libmana_project.LIBAdapter.BookTypeManagerAdapter;
-import com.example.mob2041_pnlib_libmana_project.LIBAdapter.MemberManagerAdapter;
 import com.example.mob2041_pnlib_libmana_project.LIBDAO.LoaiSachDAO;
-import com.example.mob2041_pnlib_libmana_project.LIBDAO.ThanhVienDAO;
 import com.example.mob2041_pnlib_libmana_project.Model.LoaiSach;
-import com.example.mob2041_pnlib_libmana_project.Model.ThanhVien;
 import com.example.mob2041_pnlib_libmana_project.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
 
-public class BookTypeManagerFragment extends Fragment {
-
+public class BookTypeManagerFragment extends Fragment implements View.OnClickListener{
+    // View and ViewGroup
     ListView listView;
-    ArrayList<LoaiSach> list;
     FloatingActionButton fab;
     Dialog dialog;
-    TextView tvMaLoai;
-    EditText edTenLoai;
-    Button btnSave, btnCancel;
+    TextView tvCategoryId;
+    EditText edCategoryName;
+    Button btnCreate, btnCancel;
 
+    // Object and References
+    ArrayList<LoaiSach> list;
     static LoaiSachDAO dao;
     BookTypeManagerAdapter adapter;
     LoaiSach item;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.booktype_manager_fragment, container, false);
-        listView = view.findViewById(R.id.lv_bookTypeManager);
-        fab = view.findViewById(R.id.fab_button_book_type);
+
+        // Define id for view
+        initView(view);
+
+
+        // Define event for view
+        initControl();
+
+
+        // Define method
         dao = new LoaiSachDAO(getActivity());
-
-        updateLv();
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openDialog(getActivity(), 0);
-            }
-        });
+        updateListview();
 
         listView.setOnItemLongClickListener((parent, view1, position, id) -> {
             item = list.get(position);
             openDialog(getActivity(), 1);
             return false;
         });
+
+
         return view;
+    }
+
+    private void initView(View view) {
+        listView = view.findViewById(R.id.lv_bookTypeManager);
+        fab = view.findViewById(R.id.fab_create_new_category);
+    }
+
+    private void initControl(){
+        fab.setOnClickListener(this::onClick);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.fab_create_new_category:
+                openDialog(getActivity(), 0);
+                break;
+        }
     }
 
     public void openDialog(final Context context, final int type){
         // custom dialog
-        dialog = new Dialog(context);
+        dialog = new Dialog(context, R.style.MyAlertDialogTheme);
         dialog.setContentView(R.layout.booktype_dialog);
-        tvMaLoai = dialog.findViewById(R.id.tv_maLoai);
-        edTenLoai = dialog.findViewById(R.id.ed_tenLoaiSach);
-        btnSave = dialog.findViewById(R.id.btn_save_book_type);
-        btnCancel = dialog.findViewById(R.id.btn_cancel_book_type);
+        edCategoryName = dialog.findViewById(R.id.ed_category_name);
+        btnCreate = dialog.findViewById(R.id.btn_create_category);
+        btnCancel = dialog.findViewById(R.id.btn_cancel_category);
 
-        // kiem tra type insert 0 hay update 1
-            //tvMaLoai.setEnabled(true);
+        // Check Type == 0 : insert or Type == 1 : update
         if(type != 0){
-//            tvMaLoai.setText(String.valueOf(item.maLoai));
-            edTenLoai.setText(item.tenLoai);
+            tvCategoryId.setText(String.valueOf(item.maLoai));
+            edCategoryName.setText(item.tenLoai);
 
         }
         btnCancel.setOnClickListener(new View.OnClickListener() {
@@ -89,32 +107,32 @@ public class BookTypeManagerFragment extends Fragment {
             }
         });
 
-        btnSave.setOnClickListener(new View.OnClickListener() {
+        btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 item = new LoaiSach();
-                item.tenLoai = edTenLoai.getText().toString();
-                //item.maLoai = edMaLoai.getText().toString();
+                item.tenLoai = edCategoryName.getText().toString();
                 if (validate() > 0) {
+                    // Type == 0 : insert
                     if (type == 0) {
                         // type = 0 insert
                         if (dao.insert(item) > 0) {
-                            Toast.makeText(context, "Success Added", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Create new category successful", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(context, "Fail Added", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Create new category failed!", Toast.LENGTH_SHORT).show();
                         }
 
                     } else {
-                        // type = 1 (update)
-                        //item.maLoai = Integer.parseInt(edMaLoai.getText().toString());
+                        // Type == 1 : update
+                        item.maLoai = Integer.parseInt(tvCategoryId.getText().toString());
                         if (dao.update(item) > 0) {
-                            Toast.makeText(context, "Success Fixed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Update category successful", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(context, "Fail Fixed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Update category failed!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
-                updateLv();
+                updateListview();
                 dialog.dismiss();
             }
         });
@@ -122,27 +140,27 @@ public class BookTypeManagerFragment extends Fragment {
     }
 
     public void Delete(final String Id){
-        // su dung Alert
+        // using Alert Dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("Delete");
+        builder.setTitle("Delete Category");
         builder.setMessage("Do you want to delete it?");
         builder.setCancelable(true);
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dao.delete(Id);
-                updateLv();
+                updateListview();
                 dialog.cancel();
             }
         });
-        builder.setNegativeButton("No", (dialog, which) -> {
+        builder.setNegativeButton("Cancel", (dialog, which) -> {
             dialog.cancel();
         });
-        AlertDialog alert = builder.create();
+        builder.create();
         builder.show();
     }
 
-    void updateLv(){
+    void updateListview(){
         list = (ArrayList<LoaiSach>) dao.getAll();
         adapter = new BookTypeManagerAdapter(getActivity(), this, list);
         listView.setAdapter(adapter);
@@ -150,11 +168,11 @@ public class BookTypeManagerFragment extends Fragment {
 
     public int validate(){
         int check = 1;
-        if (edTenLoai.getText().length() == 0){
-            Toast.makeText(getContext(), "You must type all INFORMATION", Toast.LENGTH_SHORT).show();
+        if (edCategoryName.getText().length() == 0){
+            Toast.makeText(getContext(), "Name of Category must not empty!", Toast.LENGTH_SHORT).show();
             check = -1;
         }
         return check;
     }
-    // checked course 5 - video 5.3 -> next course 6
+
 }

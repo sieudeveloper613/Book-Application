@@ -1,10 +1,10 @@
 package com.example.mob2041_pnlib_libmana_project;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class WelcomeScreen extends AppCompatActivity {
     Handler handler;
@@ -15,7 +15,8 @@ public class WelcomeScreen extends AppCompatActivity {
         // hide the action bar
         getSupportActionBar().hide();
 
-        new Handler().postDelayed(new Runnable() {
+        handler = new Handler();
+        handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 startActivity(new Intent(WelcomeScreen.this, LoginScreen.class));

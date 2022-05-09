@@ -5,95 +5,120 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp"
-    android:background="#E81616"
+    android:padding="@dimen/activity_horizontal_margin"
+    android:background="@color/back_ground"
     tools:context=".LoginScreen">
 
+    <ImageView
+        android:layout_gravity="center"
+        android:src="@drawable/book_logo_library"
+        android:layout_marginTop="@dimen/margin_size_medium"
+        android:layout_width="@dimen/empty_icon_width_large"
+        android:layout_height="@dimen/empty_icon_height_large"/>
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="PHƯƠNG NAM"
-        android:textColor="@color/white"
-        android:textSize="40dp"
+        android:fontFamily="@font/tuv_noh_carbone"
+        android:text="Phuong nam"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_size_panel"
+        android:textAllCaps="true"
+        android:letterSpacing="0.1"
         android:gravity="center"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="@dimen/margin_size_small"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="LIBRARY"
-        android:textColor="@color/white"
-        android:textSize="40dp"
+        android:fontFamily="@font/tuv_noh_carbone"
+        android:text="Library"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_size_panel"
+        android:textAllCaps="true"
+        android:letterSpacing="0.1"
         android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="100dp"/>
-
-    <EditText
-        android:id="@+id/ed_userName"
+        android:layout_marginTop="@dimen/margin_size_tiny"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="UserName..."
-        android:textColorHint="@color/white"
-        android:textSize="22dp"
-        android:textColor="@color/white"
-        android:background="#E15353"
-        android:padding="10dp"/>
-
-    <EditText
-        android:id="@+id/ed_passWord"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Password..."
-        android:textSize="22dp"
-        android:textColorHint="@color/white"
-        android:textColor="@color/white"
-        android:background="#E15353"
-        android:padding="10dp"
-        android:inputType="textPassword"
-        android:layout_marginTop="30dp"/>
-
-    <CheckBox
-        android:id="@+id/ck_savePassWord"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save PassWord"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        android:layout_marginTop="22dp"/>
+        android:layout_height="wrap_content"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/margin_size_medium">
 
-        <Button
+        <EditText
+            android:id="@+id/ed_account"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="Your account"
+            android:textColorHint="@color/grey"
+            android:textSize="@dimen/font_size_content"
+            android:textColor="@color/black"
+            android:background="@drawable/back_ground_input"
+            android:padding="@dimen/padding_size_small"
+            android:elevation="@dimen/elevation_normal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/ed_password"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="Your password"
+            android:textColorHint="@color/grey"
+            android:textSize="@dimen/font_size_content"
+            android:textColor="@color/black"
+            android:background="@drawable/back_ground_input"
+            android:padding="@dimen/padding_size_small"
+            android:elevation="@dimen/elevation_normal"
+            android:inputType="textPassword"
+            android:layout_marginTop="@dimen/margin_size_small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <CheckBox
+            android:id="@+id/cb_savePassword"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Save password"
+            android:textColor="@color/black"
+            android:buttonTint="@color/green"
+            android:textSize="@dimen/font_size_note"
+            android:layout_marginTop="@dimen/margin_size_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Login"
-            android:layout_gravity="center"
-            android:textSize="20dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="10dp"/>
+            android:backgroundTint="@color/green"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Sign In"
+            android:textSize="@dimen/font_size_title"
+            android:textAllCaps="false"
+            android:padding="@dimen/padding_size_tiny"
+            android:layout_marginTop="@dimen/margin_size_medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-        <Button
-            android:id="@+id/btn_cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cancel"
-            android:layout_gravity="center"
-            android:textSize="20dp"
-            android:layout_marginLeft="70dp"
-            android:layout_marginTop="10dp"/>
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/ic_baseline_menu_book_24"/>
-
-
-
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/margin_size_large">
+        <TextView
+            android:fontFamily="@font/roboto_regular"
+            android:text="Design and Develop by"
+            android:textSize="@dimen/font_size_note"
+            android:textColor="@color/black"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:fontFamily="@font/roboto_medium"
+            android:text="Superior Ha"
+            android:textSize="@dimen/font_size_title"
+            android:textColor="@color/black"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 
 </LinearLayout>

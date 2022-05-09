@@ -2,115 +2,110 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linear_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp"
-    android:background="#DFD3D3"
+    android:padding="@dimen/padding_size_small"
+    android:background="@color/back_ground"
     tools:context=".LIBFragment.CreateUserFragment">
 
     <ImageView
-        android:layout_width="250dp"
-        android:layout_height="200dp"
+        android:layout_width="@dimen/empty_icon_width_large"
+        android:layout_height="@dimen/empty_icon_height_large"
         android:layout_gravity="center"
-        android:layout_marginTop="0dp"
-        android:src="@drawable/ic_baseline_person_add_24"/>
+        android:src="@drawable/ic_baseline_person_add"/>
 
-   <com.google.android.material.textfield.TextInputLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_marginTop="20dp"
-       android:orientation="vertical">
 
-       <com.google.android.material.textfield.TextInputEditText
-           android:id="@+id/ed_create_user_name"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:hint="New User"
-           android:textSize="22dp"
-           android:textColor="@color/white"
-           android:background="@color/red"
-           android:textColorHint="@color/white"
-           />
-   </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
+    <EditText
+        android:id="@+id/ed_new_user"
+        android:fontFamily="@font/roboto_regular"
+        android:hint="New account"
+        android:textColorHint="@color/grey"
+        android:textSize="@dimen/font_size_content"
+        android:textColor="@color/black"
+        android:background="@drawable/back_ground_input"
+        android:elevation="@dimen/elevation_normal"
+        android:padding="@dimen/padding_size_small"
+        android:layout_marginTop="@dimen/margin_size_small"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_create_full_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Full Name"
-            android:textSize="22dp"
-            android:textColor="@color/white"
-            android:background="@color/red"
-            android:textColorHint="@color/white"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
+    <EditText
+        android:id="@+id/ed_new_name"
+        android:fontFamily="@font/roboto_regular"
+        android:hint="New full name"
+        android:textColorHint="@color/grey"
+        android:textSize="@dimen/font_size_content"
+        android:textColor="@color/black"
+        android:background="@drawable/back_ground_input"
+        android:elevation="@dimen/elevation_normal"
+        android:padding="@dimen/padding_size_small"
+        android:layout_marginTop="@dimen/margin_size_small"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_create_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="PassWord"
-            android:textSize="22dp"
-            android:textColor="@color/white"
-            android:background="@color/red"
-            android:inputType="textPassword"
-            android:textColorHint="@color/white"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
+    <EditText
+        android:id="@+id/ed_new_password"
+        android:fontFamily="@font/roboto_regular"
+        android:hint="New password"
+        android:textColorHint="@color/grey"
+        android:textSize="@dimen/font_size_content"
+        android:textColor="@color/black"
+        android:background="@drawable/back_ground_input"
+        android:elevation="@dimen/elevation_normal"
+        android:padding="@dimen/padding_size_small"
+        android:layout_marginTop="@dimen/margin_size_small"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_retype_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Retype PassWord"
-            android:textSize="22dp"
-            android:inputType="textPassword"
-            android:textColor="@color/white"
-            android:background="@color/red"
-            android:textColorHint="@color/white"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
+    <EditText
+        android:id="@+id/ed_enter_new_password"
+        android:fontFamily="@font/roboto_regular"
+        android:hint="Enter new password"
+        android:textColorHint="@color/grey"
+        android:textSize="@dimen/font_size_content"
+        android:textColor="@color/black"
+        android:background="@drawable/back_ground_input"
+        android:elevation="@dimen/elevation_normal"
+        android:padding="@dimen/padding_size_small"
+        android:layout_marginTop="@dimen/margin_size_small"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="15dp">
-        <Button
-            android:id="@+id/btn_change"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Create"
-            android:textSize="22dp"
-            android:padding="10dp"/>
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/margin_size_large">
 
         <Button
-            android:id="@+id/btn_cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cancel"
-            android:textSize="22dp"
-            android:padding="10dp"
-            android:layout_marginLeft="120dp"/>
+            android:id="@+id/btn_create_new_user"
+            android:backgroundTint="@color/golden_yellow"
+            app:cornerRadius="6dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Create new user"
+            android:textSize="18dp"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:padding="@dimen/padding_size_tiny"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btn_delete_all_information"
+            android:backgroundTint="@color/transparent"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            app:cornerRadius="6dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Delete all information"
+            android:textSize="18dp"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:padding="@dimen/padding_size_tiny"
+            android:layout_marginTop="@dimen/margin_size_medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 

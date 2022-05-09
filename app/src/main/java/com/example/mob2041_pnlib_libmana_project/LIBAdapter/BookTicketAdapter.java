@@ -20,6 +20,7 @@ import com.example.mob2041_pnlib_libmana_project.Model.Sach;
 import com.example.mob2041_pnlib_libmana_project.Model.ThanhVien;
 import com.example.mob2041_pnlib_libmana_project.R;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -49,24 +50,25 @@ public class BookTicketAdapter extends ArrayAdapter<PhieuMuon> {
         View view = convertView;
         if(view == null){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.bookticket_item, null);
+            view = inflater.inflate(R.layout.item_ticket, null);
         }
         final PhieuMuon item = lists.get(position);
         if(item != null);
         tvBookTicketId = view.findViewById(R.id.tv_book_ticket_id);
-        tvBookTicketId.setText("Book Ticket : " + item.maPM);
+        tvBookTicketId.setText("ID: PNL-TIC0000" + String.valueOf(item.maPM));
         sachDAO = new SachDAO(context);
         Sach sach = sachDAO.getID(String.valueOf(item.maSach));
         tvBookName = view.findViewById(R.id.tv_book_name);
-        tvBookName.setText("Book Name : " + sach.tenSach);
+        tvBookName.setText(sach.tenSach);
         thanhVienDAO = new ThanhVienDAO(context);
         ThanhVien thanhVien = thanhVienDAO.getID(String.valueOf(item.maTV));
         tvMemberName = view.findViewById(R.id.tv_member_name);
-        tvMemberName.setText("Member : " + thanhVien.hoTen);
+        tvMemberName.setText(thanhVien.hoTen);
         tvPrice = view.findViewById(R.id.tv_price);
-        tvPrice.setText("Cost : " + item.tienThue);
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+        tvPrice.setText(decimalFormat.format(item.tienThue));
         tvDay = view.findViewById(R.id.tv_day);
-        tvDay.setText("Hired Day : " + simpleDateFormat.format(item.ngay));
+        tvDay.setText(simpleDateFormat.format(item.ngay));
         tvBookReturn = view.findViewById(R.id.tv_book_return);
         if (item.traSach == 1){
             tvBookReturn.setTextColor(Color.BLUE);
